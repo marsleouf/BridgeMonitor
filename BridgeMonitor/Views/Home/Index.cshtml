@@ -1,6 +1,6 @@
-﻿@model List<Boat>
-@{
+﻿@{
     ViewData["Title"] = "Prochaine fermeture";
+    var boat = Model;
 }
 
 <div class="text-center">
@@ -13,17 +13,30 @@
             <tbody>
                 <tr>
                     <th>Nom du bateau</th>
+                    <th>Nom du bateau / Raison de la fermeture</th>
                     <th>Date de fermeture</th>
                     <th>Date de réouverture</th>
+                    <th>Durée de la fermeture</th>
+                    <th>Risque de bouchon</th>
                 </tr>
-                @foreach (var boat in Model)
-                {
                     <tr>
                         <td>@boat.BoatName</td>
                         <td>@boat.ClosingDate</td>
                         <td>@boat.ReopeningDate</td>
+                        @{ 
+                            var begin = boat.ClosingDate;
+                            var end = boat.ReopeningDate;
+                            var time = - (begin - end);
+                        }
+                        <td>@time</td>
+                        @if(begin.Hour >= 7 && begin.Hour <= 9 || begin.Hour >= 17 && begin.Hour <= 19 || end.Hour >= 7 && end.Hour <= 9 || end.Hour >= 17 && end.Hour < 19)
+                        {
+                            <td>Elevé</td>
+                        } else
+                        {
+                            <td>Faible</td>
+                        }
                     </tr>
-                }
             </tbody>
         </table>
     </div>
