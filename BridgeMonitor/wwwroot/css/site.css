@@ -51,6 +51,10 @@ button.accept-policy {
   line-height: inherit;
 }
 
+table, th, td {
+  border: 1px solid black;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

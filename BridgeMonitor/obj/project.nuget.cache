@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "1tk5aKpDJLMK2mB/rZnuL52iHF9/4zKRnMvU8nHDxUJAy60EX0ScLh1ved/hdamX5s92rnKhr+xNns9fGP5Ebw==",
+  "dgSpecHash": "++Yo2B9JbqO4AcYC/NYHhmEj1E4mcnA6HD4lpezNnxKIbm5o3ekALs/8+EmqjfC47AbT6JM8JpcF4ICcEtzauA==",
   "success": true,
   "projectFilePath": "P:\\Documents\\cours\\archi log\\éval\\BridgeMonitor\\BridgeMonitor.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\marsl\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
