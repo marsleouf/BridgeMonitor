@@ -1,0 +1,65 @@
+@model BoatModel
+@{
+    ViewData["Title"] = "Toutes les fermetures";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="row justify-content-center">
+    <h2 class="display-4">Fermetures suivantes</h2>
+    <div class="col-auto">
+        <table class="table-responsive">
+            <tbody>
+                <tr>
+                    <th>Nom du bateau / Raison de la fermeture</th>
+                    <th>Date de fermeture</th>
+                    <th>Durée de la fermeture</th>
+                </tr>
+                    @foreach (var boat in Model.BoatsAfter)
+                    {
+                        <tr>
+                            <td>@boat.BoatName</td>
+                            @{ 
+                                var begin = boat.ClosingDate;
+                                var end = boat.ReopeningDate;
+                                var time = -(begin - end);
+                            }
+                            <td>@boat.ClosingDate</td>
+                            <td>@time</td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <h2 class="display-4">Fermetures précédentes</h2>
+    <div class="col-auto">
+        <table class="table-responsive">
+            <tbody>
+                <tr>
+                    <th>Nom du bateau / Raison de la fermeture</th>
+                    <th>Date de fermeture</th>
+                    <th>Durée de la fermeture</th>
+                </tr>
+                @foreach (var boat in Model.BoatsBefore)
+                {
+                    <tr>
+                        <td>@boat.BoatName</td>
+                        @{
+                            var begin = boat.ClosingDate;
+                            var end = boat.ReopeningDate;
+                            var time = -(begin - end);
+                        }
+                        <td>@boat.ClosingDate</td>
+                        <td>@time</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -43,6 +43,34 @@ namespace BridgeMonitor.Controllers
             return View();
         }
 
+
+        public IActionResult Fermetures()
+        {
+            var boats = GetBoatFromApi();
+            var boats_before = new List<Boat>();
+            var boats_after = new List<Boat>();
+            var boats_result = new BoatModel()
+            {
+                BoatsBefore = boats_before,
+                BoatsAfter = boats_after
+            };
+            boats.Sort((x, y) => DateTime.Compare(x.ClosingDate, y.ClosingDate));
+            DateTime now = DateTime.Now;
+            foreach (var boat in boats)
+            {
+                if (boat.ClosingDate > now)
+                {
+                    boats_after.Add(boat);
+                }
+                else
+                {
+                    boats_before.Add(boat);
+                }
+            }
+
+            return View(boats_result);
+        }
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

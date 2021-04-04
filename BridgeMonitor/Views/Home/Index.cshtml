@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Prochaine fermeture";
     var boat = Model;
+    var begin = boat.ClosingDate;
+    var end = boat.ReopeningDate;
+    var time = -(begin - end);
 }
 
 <div class="text-center">
@@ -23,11 +26,6 @@
                         <td>@boat.BoatName</td>
                         <td>@boat.ClosingDate</td>
                         <td>@boat.ReopeningDate</td>
-                        @{ 
-                            var begin = boat.ClosingDate;
-                            var end = boat.ReopeningDate;
-                            var time = - (begin - end);
-                        }
                         <td>@time</td>
                         @if(begin.Hour >= 7 && begin.Hour <= 9 || begin.Hour >= 17 && begin.Hour <= 19 || end.Hour >= 7 && end.Hour <= 9 || end.Hour >= 17 && end.Hour < 19)
                         {
